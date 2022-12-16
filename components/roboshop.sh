@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo ROBOSHOP PROJECT SETUP USING SHELL SCRIPTING
