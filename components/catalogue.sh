@@ -4,7 +4,6 @@ curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
 yum install nodejs -y
 
 useradd roboshop
-su -roboshop
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
 cd /home/roboshop
 rm-rf catalogue
