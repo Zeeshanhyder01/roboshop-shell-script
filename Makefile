@@ -18,3 +18,6 @@ shipping:
 	bash components/shipping.sh
 dispatch:
 	bash components/dispatch.sh
+redis:
+	bash components/redis.sh
+
