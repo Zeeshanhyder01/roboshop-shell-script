@@ -10,7 +10,7 @@ unzip /tmp/cart.zip
 mv cart-main cart
 cd cart
 npm install
-
+#Update with redis and catalogue ip addresses in systemd.service file
 sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' /home/roboshop/cart/systemd.service
 sed -i -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' /home/roboshop/cart/systemd.service
 
