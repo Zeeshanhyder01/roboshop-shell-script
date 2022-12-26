@@ -14,7 +14,7 @@ GROUP_ID=$(id -g roboshop)
 sed -i -e "/^uid/c uid =${USER_ID}" -e "/^gid/c gid =${GROUP_ID}" /home/roboshop/payment/payment.ini
 sed -i -e 's/CARTHOST/cart.roboshop.internal/' /home/roboshop/payment/systemd.service
 sed -i -e 's/USERHOST/user.roboshop.internal/' /home/roboshop/payment/systemd.service
-sed -i -e 's/AMQPHOST/rabbitmq.roboshop.internal' /home/roboshop/payment/systemd.service
+sed -i -e "s/AMQPHOST/rabbitmq.roboshop.internal" /home/roboshop/payment/systemd.service
 
 mv /home/roboshop/payment/systemd.service  /etc/systemd/system/payment.service
 systemctl daemon-reload
