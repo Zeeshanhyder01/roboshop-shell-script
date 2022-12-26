@@ -16,7 +16,7 @@ sed -i -e 's/CARTHOST/cart.roboshop.internal/' /home/roboshop/payment/systemd.se
 sed -i -e 's/USERHOST/user.roboshop.internal/' /home/roboshop/payment/systemd.service
 sed -i -e 's/AMQPHOST/rabbitmq.roboshop.internal' /home/roboshop/payment/systemd.service
 
-mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
+mv /home/roboshop/payment/systemd.service  /etc/systemd/system/payment.service
 systemctl daemon-reload
 systemctl enable payment
 systemctl restart payment
