@@ -11,6 +11,6 @@ echo "uninstall plugin validate_password ;" | mysql -uroot -p"${MYSQL_PASSWORD}"
 curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
 #Load the schema for Services.
 cd /tmp
-unzip -O mysql.zip
+unzip -o mysql.zip
 cd mysql-main
 mysql -u root -p"${MYSQL_PASSWORD}" <shipping.sql
