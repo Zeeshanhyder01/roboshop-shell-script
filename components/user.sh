@@ -16,5 +16,5 @@ sed -i -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/user/syst
 
 mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
 systemctl daemon-reload
-systemctl start user
+systemctl restart user
 systemctl enable user
