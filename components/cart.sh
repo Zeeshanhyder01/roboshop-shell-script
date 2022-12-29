@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source components/common.sh
 
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
 yum install nodejs -y

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source components/common.sh
 
 yum install maven -y
 useradd roboshop
