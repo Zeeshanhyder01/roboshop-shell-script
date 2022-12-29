@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source components/common.sh
-
+CHECK_ROOT
 # Installing Nginx for frontend
 yum install nginx -y
 systemctl enable nginx
