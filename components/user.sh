@@ -3,6 +3,10 @@ source components/common.sh
 CHECK_ROOT
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
 yum install nodejs -y
+if [ &? -ne 0 ]; then
+  echo "/e[31 m Setting up Node js YUM  Repo is FAILURE /e[0m"
+  exit 2
+fi
 
 useradd roboshop
 curl -s -L -o /tmp/user.zip "https://github.com/roboshop-devops-project/user/archive/main.zip"
