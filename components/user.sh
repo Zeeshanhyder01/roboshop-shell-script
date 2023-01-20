@@ -10,7 +10,10 @@ yum install nodejs -y &>>${LOG}
 CHECK_STAT $?
 
 echo -e "\e[33m Creating Application User \e[0m"
-useradd roboshop &>>${LOG}
+id roboshop  &>>${LOG}
+if [ $? -ne 0 ]; then
+  useradd roboshop &>>${LOG}
+fi
 CHECK_STAT $?
 
 echo -e "\e[33m Downloading User Content \e[0m"
