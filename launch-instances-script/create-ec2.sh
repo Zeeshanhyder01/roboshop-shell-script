@@ -2,7 +2,7 @@
 
 ##### Change these values ###
 ZONE_ID="Z009951715QDT5BDTZ8CR"
-SG_NAME="New Group"
+SG_NAME="ALLOW-ALL-FROM-INTERNET"
 #############################
 
 
