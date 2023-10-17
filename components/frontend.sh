@@ -1,0 +1,1 @@
+echo Install frontend component
