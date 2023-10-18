@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
-#mongo
+
 yum install -y mongodb-org
 systemctl enable mongod
 systemctl start mongod
@@ -12,6 +12,3 @@ unzip -o mongodb.zip
 cd mongodb-main
 mongo < catalogue.js
 mongo < users.js
-
-
-
