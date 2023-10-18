@@ -10,8 +10,8 @@ rm -rf *
 unzip /tmp/frontend.zip
 mv frontend-main/static/* .
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
-sed -i -e'/catalogue/ s/localhost/catalogue.roboshop.ingernal/' /etc/nginx/default.d/roboshop.conf
-sed -i -e'/user/ s/localhost/user.roboshop.ingernal/' /etc/nginx/default.d/roboshop.conf
-sed -i -e'/cart/ s/localhost/cart.roboshop.ingernal/' /etc/nginx/default.d/roboshop.conf
+sed -i -e'/catalogue/ s/localhost/catalogue.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
+sed -i -e'/user/ s/localhost/user.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
+sed -i -e'/cart/ s/localhost/cart.roboshop.internal/' /etc/nginx/default.d/roboshop.conf
 systemctl restart nginx
 
