@@ -18,4 +18,6 @@ rabbitmq:
 	@bash components/rabbitmq.sh
 dispatch:
 	@bash components/dispatch.sh
+shipping:
+	@bash components/shipping.sh
 
