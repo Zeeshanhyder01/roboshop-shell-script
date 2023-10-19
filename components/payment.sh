@@ -13,7 +13,8 @@ USER_ID=$(id -u roboshop)
 GROUP_ID=$(id -g roboshop)
 sed -i -e "/^uid/ c uid = ${USER_ID}" -e "/^gid/ c gid = ${GROUP_ID}"  /home/roboshop/payment/payment.ini
 
-sed -i -e's/CARTHOST/cart.roboshop.internal/g' -e's/USERHOST/user.roboshop.internal/g' -e's/AMQPHOST/rabbitmq.roboshop.internal/g'/home/roboshop/payment/systemd.service
+sed -i -e "s/CARTHOST/cart.roboshop.internal/g" /home/roboshop/payment/systemd.service
+# -e's/USERHOST/user.roboshop.internal/g' -e's/AMQPHOST/rabbitmq.roboshop.internal/g'/home/roboshop/payment/systemd.service
 
 #sed -i -e 's/CARTHOST/cart.roboshop.internal' -e 's/USERHOST/user.roboshop.internal' -e 's/AMQPHOST/rabbitmq.roboshop.internal'   /home/roboshop/payment/systemd.service
 
