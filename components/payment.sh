@@ -12,16 +12,9 @@ pip3 install -r requirements.txt
 USER_ID=$(id -u roboshop)
 GROUP_ID=$(id -g roboshop)
 sed -i -e "/^uid/ c uid = ${USER_ID}" -e "/^gid/ c gid = ${GROUP_ID}"  /home/roboshop/payment/payment.ini
+sed -i -e 's/CARTHOST/cart.roboshop.internal' -e 's/USERHOST/user.roboshop.internal' -e 's/AMQPHOST/rabbitmq.roboshop.internal'   /home/roboshop/payment/systemd.service
 
-#
-#    Update `CARTHOST` with cart server ip
-#
-#    Update `USERHOST` with user server ip
-#
-#    Update `AMQPHOST` with RabbitMQ server ip.
-#
-#3. Setup the service
-# mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
-# systemctl daemon-reload
-# systemctl enable payment
-# systemctl start payment
+mv /home/roboshop/payment/systemd.service /etc/systemd/system/payment.service
+systemctl daemon-reload
+systemctl enable payment
+systemctl restart payment
