@@ -8,12 +8,12 @@ unzip /tmp/payment.zip
 mv payment-main payment
 cd /home/roboshop/payment
 pip3 install -r requirements.txt
-#```
-#
-#**Note: Above command may fail with permission denied, So run as root user**
-#
-#1. Update the roboshop user and group id in `payment.ini` file.
-#2. Update SystemD service file
+
+USER_ID=$(id-u roboshop)
+GROUP-ID=$(id -g roboshop)
+
+sed -i -e "/^uid/ uid = ${USER_ID}" -e "/^gid/ gid = ${GROUP_ID}"  /home/roboshop/payment/payment.ini
+
 #
 #    Update `CARTHOST` with cart server ip
 #
