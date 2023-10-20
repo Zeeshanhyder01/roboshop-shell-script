@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 CHECK_ROOT(){
   USER_ID=$(id -u)
   if [ $USER_ID -ne 0 ] ; then
