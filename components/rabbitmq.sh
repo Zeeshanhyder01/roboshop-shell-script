@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+source components/common.sh
+CHECK_ROOT
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
 yum install erlang -y
 
