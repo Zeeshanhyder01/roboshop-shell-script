@@ -1,16 +1,9 @@
 #!/usr/bin/env bash
 source components/common.sh
 CHECK_ROOT
-echo -e "\e[31m SETTING UP THE NODEJS REPO \e[0"
+echo -e "\e[31m SETTING UP THE NODEJS YUM REPO IS \e[0"
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash - &>>${LOG}
-
-if [ $? -ne 0 ] ; then
-  echo -e "\e[31m SETTING UP THE NODEJS REPO is FAILURE \e[0"
-  else
-    echo -e "\e[31m SUCCESS \e[0"
-  exit 2
-fi
-
+CHECK_STAT $?
 yum install nodejs -y
 useradd roboshop
 curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip"
