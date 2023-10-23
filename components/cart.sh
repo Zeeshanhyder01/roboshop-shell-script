@@ -11,9 +11,9 @@ CHECK_STAT $?
 
 PRINT "creating an Application user"
 id roboshop &>>${LOG}
-#if [ $? -ne 0 ] ; then
+ if [ $? -ne 0 ] ; then
   useradd roboshop &>>${LOG}
-  #fi
+  fi
 CHECK_STAT $?
 
 PRINT "Downloading cart content"
@@ -47,7 +47,7 @@ systemctl daemon-reload
 systemctl enable cart &>>${LOG}
 PRINT "start cart service"
 systemctl restart cart  &>>${LOG}
-
+CHECK_STAT $?
 
 
 
