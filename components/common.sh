@@ -113,7 +113,7 @@ MAVEN(){
   yum install maven -y &>>${LOG}
   CHECK_STAT $?
   APP_COMMON_SETUP
-  PRINT "COMPOILE ${COMPONENT}  CODE "
+  PRINT "COMPILE ${COMPONENT}  CODE "
 
   mv ${COMPONENT}-main ${COMPONENT} && cd ${COMPONENT}  && mvn clean package  &>>${LOG} &&   mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
   CHECK_STAT $?
