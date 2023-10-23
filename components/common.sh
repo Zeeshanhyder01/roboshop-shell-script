@@ -8,23 +8,24 @@ CHECK_ROOT(){
 }
 
 CHECK_STAT(){
+echo "-------------------"
   if [ $1 -ne 0 ] ; then
     echo -e "\e[31m  FAILED \e[0m"
     echo -e "\n check log file  -$(LOG) for errors \n"
+      exit 2
     else
       echo -e "\e[32m SUCCESS \e[0m"
-    exit 2
+
   fi
 }
-
 
 LOG=/tmp/roboshop.log
 rm -rf $LOG
 
-#PRINT() {
-#  echo "----------$1---------"
-#  echo "$1"
-#}
+PRINT() {
+  echo "----------$1---------"
+  echo "$1"
+}
 #
 #NODEJS() {
 #CHECK_ROOT
