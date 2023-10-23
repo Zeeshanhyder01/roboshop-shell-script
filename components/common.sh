@@ -64,8 +64,7 @@ NODEJS() {
   CHECK_STAT $?
 
   PRINT "Update systemd Configuration"
-  sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' /etc/systemd/system/${COMPONENT}.service &>>${LOG}
-  #-e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/'  -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /etc/systemd/system/${COMPONENT}.service &>>${LOG}
+  sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>>${LOG}
   CHECK_STAT $?
 
   PRINT "SetUp systemd Configuration"
