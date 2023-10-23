@@ -44,36 +44,36 @@ NODEJS() {
     fi
   CHECK_STAT $?
 
-  PRINT "Downloading cart content"
-  curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip"  &>>${LOG}
+  PRINT "Downloading ${COMPONENT} content"
+  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip"  &>>${LOG}
   CHECK_STAT $?
 
   cd /home/roboshop
   PRINT "Remove OLD content"
-  rm -rf cart &>>${LOG}
+  rm -rf ${COMPONENT} &>>${LOG}
   CHECK_STAT $?
 
-  PRINT "unzipping / extract cart content"
-  unzip /tmp/cart.zip &>>${LOG}
+  PRINT "unzipping / extract ${COMPONENT} content"
+  unzip /tmp/${COMPONENT}.zip &>>${LOG}
   CHECK_STAT $?
 
-  mv cart-main cart
-  cd cart
-  PRINT "Install NODEJS Dependencies for cart Component"
+  mv ${COMPONENT}-main ${COMPONENT}
+  cd ${COMPONENT}
+  PRINT "Install NODEJS Dependencies for ${COMPONENT} Component"
   npm install &>>${LOG}
   CHECK_STAT $?
 
   PRINT "Update systemd Configuration"
-  sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' /etc/systemd/system/cart.service &>>${LOG}
+  sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' /etc/systemd/system/${COMPONENT}.service &>>${LOG}
   CHECK_STAT $?
 
   PRINT "SetUp systemd Configuration"
-  mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service  &>>${LOG}
+  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service  &>>${LOG}
   CHECK_STAT $?
 
   systemctl daemon-reload
   systemctl enable cart &>>${LOG}
-  PRINT "start cart service"
-  systemctl restart cart  &>>${LOG}
+  PRINT "start ${COMPONENT} service"
+  systemctl restart ${COMPONENT}  &>>${LOG}
   CHECK_STAT $?
 }
