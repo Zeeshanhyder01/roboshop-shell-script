@@ -16,37 +16,37 @@ if [ $? -ne 0 ] ; then
   fi
 CHECK_STAT $?
 
-printf "Downloading  ${COMPONENT} content"
-curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip"  &>>${LOG}
+printf "Downloading cart content"
+curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip"  &>>${LOG}
 CHECK_STAT $?
 
 cd /home/roboshop
 printf "Remove OLD content"
-rm -rf ${COMPONENT} &>>${LOG}
+rm -rf cart &>>${LOG}
 CHECK_STAT $?
 
 printf "unzipping / extract cart content"
-unzip /tmp/${COMPONENT}.zip &>>${LOG}
+unzip /tmp/cart.zip &>>${LOG}
 CHECK_STAT $?
 
-mv ${COMPONENT}-main ${COMPONENT}
+mv cart-main cart
 cd cart
 printf "Install NODEJS Dependencies for cart Component"
 npm install &>>${LOG}
 CHECK_STAT $?
 
 printf "Update systemd Configuration"
-sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' /etc/systemd/system/${COMPONENT}.service &>>${LOG}
+sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' /etc/systemd/system/cart.service &>>${LOG}
 CHECK_STAT $?
 
 printf "SetUp systemd Configuration"
-mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service  &>>${LOG}
+mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service  &>>${LOG}
 CHECK_STAT $?
 
 systemctl daemon-reload
-systemctl enable ${COMPONENT} &>>${LOG}
-printf "start ${COMPONENT} service"
-systemctl restart ${COMPONENT}  &>>${LOG}
+systemctl enable cart &>>${LOG}
+printf "start cart service"
+systemctl restart cart  &>>${LOG}
 
 
 
