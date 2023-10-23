@@ -2,7 +2,7 @@
 source components/common.sh
 CHECK_ROOT
 
-PRINT "SETTING UP THE NODEJS YUM REPO IS"
+printf "SETTING UP THE NODEJS YUM REPO IS"
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash - &>>${LOG}
 CHECK_STAT $?
 
