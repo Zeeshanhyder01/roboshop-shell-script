@@ -138,5 +138,5 @@ PYTHON() {
   sed -i -e "/^uid/ c uid = ${USER_ID}" -e "/^gid/ c gid = ${GROUP_ID}"  /home/roboshop/${COMPONENT}/${COMPONENT}.ini
   CHECK_STAT $?
   SYSTEMD
-  CHECK_STAT $?
+
 }
