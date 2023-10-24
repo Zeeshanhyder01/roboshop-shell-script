@@ -3,7 +3,7 @@ source components/common.sh
 CHECK_ROOT
 
 if [ -z "${MYSQL_PASSWORD}" ]; then
-  else " NEED MYSQL_PASSWORD ENV VARAIABLE"
+  echo " NEED MYSQL_PASSWORD ENV VARAIABLE"
   exit 1
 fi
 
