@@ -81,7 +81,7 @@ NODEJS() {
 
 }
 
-NGINX(){
+NGINX() {
     CHECK_ROOT
     PRINT "Installing Nginx"
     yum install nginx -y &>>${LOG}
