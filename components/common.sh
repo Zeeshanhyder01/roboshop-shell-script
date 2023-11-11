@@ -64,7 +64,7 @@ SYSTEMD(){
   CHECK_STAT $?
 }
 
-NODEJS() {
+NODEJS(){
   CHECK_ROOT
   PRINT "SETTING UP THE NODEJS YUM REPO IS"
   curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash - &>>${LOG}
@@ -106,7 +106,6 @@ NGINX(){
     sed -i -e "/$backend/ s/localhost/$backend.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
     CHECK_STAT $?
     done
-
     PRINT " START NGINX SERVICE "
     systemctl enable nginx &>>${LOG} && systemctl restart nginx  &>>${LOG}
     CHECK_STAT $?
@@ -119,7 +118,6 @@ MAVEN(){
   CHECK_STAT $?
   APP_COMMON_SETUP
   PRINT "COMPILE ${COMPONENT}  CODE "
-
   mv ${COMPONENT}-main ${COMPONENT} && cd ${COMPONENT}  && mvn clean package  &>>${LOG} &&   mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
   CHECK_STAT $?
   SYSTEMD
@@ -127,7 +125,7 @@ MAVEN(){
 }
 
 
-PYTHON() {
+PYTHON(){
   CHECK_ROOT
   PRINT "INSTALL PYTHON3"
   yum install python36 gcc python3-devel -y  &>>${LOG}
